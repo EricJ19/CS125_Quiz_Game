@@ -18,17 +18,21 @@ public class NewGameActivity extends AppCompatActivity {
     final Button answer4 = findViewById(R.id.answer4);
     final TextView question = findViewById(R.id.question);
     final TextView playerScore = findViewById(R.id.playerScore);
-    public int questionNumb;
+    private int questionNumb;
+    public static String currentScore;
+    public static String previousCurrentScore;
+    private static int numberTimesPlayed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_game_activity);
         updateQandA();
-        finish();
+        numberTimesPlayed++;
     }
     public NewGameActivity() {
-
+        questionNumb = 0;
+        numberTimesPlayed = 0;
     }
     /**
      * Generates the random questions.
@@ -58,6 +62,12 @@ public class NewGameActivity extends AppCompatActivity {
         final int correctAnswer = 2;
         questionNumb++;
         if (questionNumb == 10) {
+            currentScore = playerScore.toString();
+            if (numberTimesPlayed == 0) {
+                previousCurrentScore = "0";
+            } else {
+                previousCurrentScore = playerScore.toString();
+            }
             Intent intent = new Intent(this, Player.class);
             startActivity(intent);
         }
