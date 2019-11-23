@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/playerCurrentScore"
+        android:id="@+id/playerLast9Scores"
         android:layout_width="285dp"
         android:layout_height="480dp"
         android:layout_marginStart="40dp"
@@ -17,14 +17,14 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="30dp"
-        android:text="Your Score is ..."
+        android:text="Your Score History:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/playerLast9Scores"
+        android:id="@+id/playerCurrentScore"
         android:layout_width="285dp"
         android:layout_height="75dp"
         android:layout_marginStart="40dp"
@@ -33,8 +33,8 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/playerCurrentScore"
+        android:text="Your Score is..."
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
