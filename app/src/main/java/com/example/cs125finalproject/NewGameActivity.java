@@ -16,6 +16,7 @@ public class NewGameActivity extends AppCompatActivity {
     final Button answer2 = findViewById(R.id.answer2);
     final Button answer3 = findViewById(R.id.answer3);
     final Button answer4 = findViewById(R.id.answer4);
+    final TextView question = findViewById(R.id.question);
     final TextView playerScore = findViewById(R.id.playerScore);
     public int questionNumb;
 
@@ -23,6 +24,8 @@ public class NewGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_game_activity);
+        updateQandA();
+        finish();
     }
     public NewGameActivity() {
 
@@ -31,7 +34,6 @@ public class NewGameActivity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void questionGenerate() {
-        final TextView question = findViewById(R.id.question);
         question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -51,14 +53,16 @@ public class NewGameActivity extends AppCompatActivity {
     }
     /**
      * Update questions and answers when an answer is clicked.
-     * @param correctAnswer the correct int answer corresponding to a button answer.
      */
-    public void updateQandA(final int correctAnswer) {
+    public void updateQandA() {
+        final int correctAnswer = 2;
         questionNumb++;
         if (questionNumb == 10) {
             Intent intent = new Intent(this, Player.class);
             startActivity(intent);
         }
+        questionGenerate();
+        answersGenerate();
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -68,7 +72,7 @@ public class NewGameActivity extends AppCompatActivity {
                 } else {
 
                 }
-                updateQandA(5);
+                updateQandA();
             }
         });
         answer2.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +84,7 @@ public class NewGameActivity extends AppCompatActivity {
                 } else {
 
                 }
-                updateQandA(5);
+                updateQandA();
             }
         });
         answer3.setOnClickListener(new View.OnClickListener() {
@@ -92,19 +96,7 @@ public class NewGameActivity extends AppCompatActivity {
                 } else {
 
                 }
-                updateQandA(5);
-            }
-        });
-        answer4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // Change the label's text
-                if (correctAnswer == 4) {
-
-                } else {
-
-                }
-                updateQandA(5);
+                updateQandA();
             }
         });
     }
