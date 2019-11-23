@@ -78,9 +78,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 1) {
-
+                    answer1.setText("Correct: Placeholder for later");
                 } else {
-
+                    answer1.setText("Wrong: Placeholder for later");
                 }
                 updateQandA();
             }
@@ -90,9 +90,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 2) {
-
+                    answer2.setText("Correct: Placeholder for later");
                 } else {
-
+                    answer2.setText("Wrong: Placeholder for later");
                 }
                 updateQandA();
             }
@@ -102,9 +102,21 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 3) {
-
+                    answer3.setText("Correct: Placeholder for later");
                 } else {
-
+                    answer3.setText("Wrong: Placeholder for later");
+                }
+                updateQandA();
+            }
+        });
+        answer4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                // Change the label's text
+                if (correctAnswer == 4) {
+                    answer4.setText("Correct: Placeholder for later");
+                } else {
+                    answer4.setText("Wrong: Placeholder for later");
                 }
                 updateQandA();
             }
