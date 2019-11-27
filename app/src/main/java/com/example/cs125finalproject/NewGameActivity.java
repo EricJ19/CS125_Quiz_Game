@@ -86,11 +86,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 1) {
-                    answer1.setText("Correct: Placeholder for later");
                     correct = true;
                     updatePlayerScore();
                 } else {
-                    answer1.setText("Wrong: Placeholder for later");
                     correct = false;
                     updatePlayerScore();
                 }
@@ -102,11 +100,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 2) {
-                    answer2.setText("Correct: Placeholder for later");
                     correct = true;
                     updatePlayerScore();
                 } else {
-                    answer2.setText("Wrong: Placeholder for later");
                     correct = false;
                     updatePlayerScore();
                 }
@@ -118,11 +114,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 3) {
-                    answer3.setText("Correct: Placeholder for later");
                     correct = true;
                     updatePlayerScore();
                 } else {
-                    answer3.setText("Wrong: Placeholder for later");
                     correct = false;
                     updatePlayerScore();
                 }
@@ -134,11 +128,9 @@ public class NewGameActivity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 4) {
-                    answer4.setText("Correct: Placeholder for later");
                     correct = true;
                     updatePlayerScore();
                 } else {
-                    answer4.setText("Wrong: Placeholder for later");
                     correct = false;
                     updatePlayerScore();
                 }
