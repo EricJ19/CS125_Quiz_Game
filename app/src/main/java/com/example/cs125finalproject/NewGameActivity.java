@@ -12,18 +12,49 @@ import androidx.appcompat.app.AppCompatActivity;
  * Activity of the game after main menu and shows the randomly generated questions page.
  */
 public class NewGameActivity extends AppCompatActivity {
+    /**
+     * Buttons to the answers.
+     */
     final Button answer1 = findViewById(R.id.answer1);
     final Button answer2 = findViewById(R.id.answer2);
     final Button answer3 = findViewById(R.id.answer3);
     final Button answer4 = findViewById(R.id.answer4);
+    /**
+     * The question TextView.
+     */
     final TextView question = findViewById(R.id.question);
+    /**
+     * The playerScore TextView.
+     */
     final TextView playerScore = findViewById(R.id.playerScore);
+    /**
+     * This is an internal counter (not visible to player)
+     * reflects the question number the user is currently on.
+     */
     private int questionNumb;
+    /**
+     * Current Score of player for the player history UI.
+     */
     public static String currentScore;
+    /**
+     * Previous Score of player for the player history UI.
+     */
     public static String previousCurrentScore;
-    private static int numberTimesPlayed;
+    /**
+     * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create.
+     */
+    private static int numberTimesPlayed = -1;
+    /**
+     * Player stores player info: name, score.
+     */
     public Player newPlayer;
+    /**
+     * Correct - true if answer is button clicked, false if answer is not button clicked.
+     */
     private boolean correct;
+    /**
+     * The score counter that updates as questions are answered is visible to player.
+     */
     private int activeScore;
 
     @Override
@@ -31,8 +62,8 @@ public class NewGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         newPlayer = new Player(savedInstanceState.getString("newPlayerName"), 0);
         setContentView(R.layout.new_game_activity);
-        updateQandA();
         numberTimesPlayed++;
+        updateQandA();
     }
     public NewGameActivity() {
         questionNumb = 0;
