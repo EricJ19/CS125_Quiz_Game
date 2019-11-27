@@ -38,6 +38,7 @@ public class NewGameActivity extends AppCompatActivity {
         questionNumb = 0;
         numberTimesPlayed = 0;
         activeScore = 0;
+
     }
     /**
      * Generates the random questions.
