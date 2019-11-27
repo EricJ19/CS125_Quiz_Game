@@ -43,13 +43,7 @@ public class NewGameActivity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void questionGenerate() {
-        question.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                // Change the label's text
-                question.setText("");
-            }
-        });
+        question.setText("");
     }
     /**
      * Generates the random answers.
@@ -67,6 +61,7 @@ public class NewGameActivity extends AppCompatActivity {
      * previousCurrentScore is the score of last session and is "0" if there was no session previously.
      */
     public void updateQandA() {
+        //the correctAnswer is based on the question and answer. Code doesn't reflect that and instead has int 2 for testing purposes.
         final int correctAnswer = 2;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
