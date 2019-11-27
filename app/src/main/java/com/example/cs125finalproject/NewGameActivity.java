@@ -67,6 +67,9 @@ public class NewGameActivity extends AppCompatActivity {
             if (numberTimesPlayed == 0) {
                 previousCurrentScore = "0";
             } else {
+                //important that previousCurrentScore is modified before currentScore.
+                //This is so the previousCurrentScore is updated with the last CurrentScore before CurrentScore
+                // is modified to reflect the score now.
                 previousCurrentScore = currentScore;
             }
             currentScore = playerScore.toString();
