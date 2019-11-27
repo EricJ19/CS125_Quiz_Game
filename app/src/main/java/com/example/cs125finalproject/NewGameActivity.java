@@ -62,7 +62,9 @@ public class NewGameActivity extends AppCompatActivity {
     }
     /**
      * Update questions and answers when an answer is clicked.
-     * If the number of questions answered is 10, then
+     * If the number of questions answered is 10 (after user clicked 10 answers), then the app will go to players page.
+     * currentScore will be set to the score of this session.
+     * previousCurrentScore is the score of last session and is "0" if there was no session previously.
      */
     public void updateQandA() {
         final int correctAnswer = 2;
