@@ -22,10 +22,14 @@ public class NewGameActivity extends AppCompatActivity {
     public static String currentScore;
     public static String previousCurrentScore;
     private static int numberTimesPlayed;
+    public Player newPlayer;
+    private boolean correct;
+    private int activeScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        newPlayer = new Player(savedInstanceState.getString("newPlayerName"), 0);
         setContentView(R.layout.new_game_activity);
         updateQandA();
         numberTimesPlayed++;
@@ -33,6 +37,7 @@ public class NewGameActivity extends AppCompatActivity {
     public NewGameActivity() {
         questionNumb = 0;
         numberTimesPlayed = 0;
+        activeScore = 0;
     }
     /**
      * Generates the random questions.
@@ -62,13 +67,13 @@ public class NewGameActivity extends AppCompatActivity {
         final int correctAnswer = 2;
         questionNumb++;
         if (questionNumb == 10) {
-            currentScore = playerScore.toString();
             if (numberTimesPlayed == 0) {
                 previousCurrentScore = "0";
             } else {
-                previousCurrentScore = playerScore.toString();
+                previousCurrentScore = currentScore;
             }
-            Intent intent = new Intent(this, Player.class);
+            currentScore = playerScore.toString();
+            Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
         questionGenerate();
@@ -79,8 +84,12 @@ public class NewGameActivity extends AppCompatActivity {
                 // Change the label's text
                 if (correctAnswer == 1) {
                     answer1.setText("Correct: Placeholder for later");
+                    correct = true;
+                    updatePlayerScore();
                 } else {
                     answer1.setText("Wrong: Placeholder for later");
+                    correct = false;
+                    updatePlayerScore();
                 }
                 updateQandA();
             }
@@ -91,8 +100,12 @@ public class NewGameActivity extends AppCompatActivity {
                 // Change the label's text
                 if (correctAnswer == 2) {
                     answer2.setText("Correct: Placeholder for later");
+                    correct = true;
+                    updatePlayerScore();
                 } else {
                     answer2.setText("Wrong: Placeholder for later");
+                    correct = false;
+                    updatePlayerScore();
                 }
                 updateQandA();
             }
@@ -103,8 +116,12 @@ public class NewGameActivity extends AppCompatActivity {
                 // Change the label's text
                 if (correctAnswer == 3) {
                     answer3.setText("Correct: Placeholder for later");
+                    correct = true;
+                    updatePlayerScore();
                 } else {
                     answer3.setText("Wrong: Placeholder for later");
+                    correct = false;
+                    updatePlayerScore();
                 }
                 updateQandA();
             }
@@ -115,8 +132,12 @@ public class NewGameActivity extends AppCompatActivity {
                 // Change the label's text
                 if (correctAnswer == 4) {
                     answer4.setText("Correct: Placeholder for later");
+                    correct = true;
+                    updatePlayerScore();
                 } else {
                     answer4.setText("Wrong: Placeholder for later");
+                    correct = false;
+                    updatePlayerScore();
                 }
                 updateQandA();
             }
@@ -126,7 +147,10 @@ public class NewGameActivity extends AppCompatActivity {
      * Updates the score part of UI after the answer is clicked by user.
      */
     public void updatePlayerScore() {
-        playerScore.setText("");
+        if (correct) {
+            activeScore++;
+            playerScore.setText(String.valueOf(activeScore));
+        }
     }
 
 }
