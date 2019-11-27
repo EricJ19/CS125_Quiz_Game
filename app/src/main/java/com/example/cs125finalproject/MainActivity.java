@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TextView nameText = findViewById(R.id.playerName);
-                intent.putExtra("New Player Name", nameText.getText().toString());
+                intent.putExtra("newPlayerName", nameText.getText().toString());
                 startActivity(intent);
                 finish();
             }

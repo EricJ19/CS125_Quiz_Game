@@ -22,10 +22,12 @@ public class NewGameActivity extends AppCompatActivity {
     public static String currentScore;
     public static String previousCurrentScore;
     private static int numberTimesPlayed;
+    Player newPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        newPlayer = new Player(savedInstanceState.getString("newPlayerName"), 0);
         setContentView(R.layout.new_game_activity);
         updateQandA();
         numberTimesPlayed++;
@@ -68,7 +70,7 @@ public class NewGameActivity extends AppCompatActivity {
             } else {
                 previousCurrentScore = playerScore.toString();
             }
-            Intent intent = new Intent(this, Player.class);
+            Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
         questionGenerate();
