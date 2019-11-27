@@ -49,7 +49,7 @@ public class Player extends AppCompatActivity {
     public void setPoints(int setPoints) {
         points = setPoints;
     }
-    
+
     private String[] playerLast9ScoresStr = new String[9];
     public void updatePlayerScoresUI(String currentScore, String previousCurrentScore) {
         TextView playerCurrentScore = findViewById(R.id.playerCurrentScore);
