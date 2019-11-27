@@ -62,10 +62,10 @@ public class NewGameActivity extends AppCompatActivity {
     }
     /**
      * Update questions and answers when an answer is clicked.
+     * If the number of questions answered is 10, then
      */
     public void updateQandA() {
         final int correctAnswer = 2;
-        questionNumb++;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
                 previousCurrentScore = "0";
@@ -76,6 +76,7 @@ public class NewGameActivity extends AppCompatActivity {
             Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
+        questionNumb++;
         questionGenerate();
         answersGenerate();
         answer1.setOnClickListener(new View.OnClickListener() {
