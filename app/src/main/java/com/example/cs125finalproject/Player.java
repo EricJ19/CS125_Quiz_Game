@@ -28,6 +28,28 @@ public class Player extends AppCompatActivity {
         });
 
     }
+    /** the players name. */
+    private String name;
+    /** the amount of points the player got. */
+    private int points;
+    /** the constructor to create new player. */
+    public Player(String setName, int setPoints) {
+        name = setName;
+        points = setPoints;
+    }
+    /** return player name. */
+    public String getName() {
+        return name;
+    }
+    /** returns amount of points gotten by player. */
+    public int getPoints() {
+        return points;
+    }
+    /** set the amount of points gotten by player. */
+    public void setPoints(int setPoints) {
+        points = setPoints;
+    }
+    
     private String[] playerLast9ScoresStr = new String[9];
     public void updatePlayerScoresUI(String currentScore, String previousCurrentScore) {
         TextView playerCurrentScore = findViewById(R.id.playerCurrentScore);
