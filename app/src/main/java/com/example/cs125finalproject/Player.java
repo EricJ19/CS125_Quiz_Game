@@ -16,10 +16,13 @@ public class Player {
     private String name;
     /** the amount of points the player got. */
     private int points;
+    /** the chosen topic for this player. */
+    private int topic;
     /** the constructor to create new player. */
-    public Player(String setName, int setPoints) {
+    public Player(String setName, int setPoints, int setTopic) {
         name = setName;
         points = setPoints;
+        topic = setTopic;
     }
     /** return player name. */
     public String getName() {
