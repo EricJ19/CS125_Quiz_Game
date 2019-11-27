@@ -2,12 +2,15 @@ package com.example.cs125finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         spinnerSetUp();
-
+        Button startGame = findViewById(R.id.startGame);
+        final Intent intent = new Intent(this, NewGameActivity.class);
+        View.OnClickListener startGameClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView nameText = findViewById(R.id.playerName);
+                intent.putExtra("New Player Name", nameText.getText().toString());
+                startActivity(intent);
+                finish();
+            }
+        };
+        startGame.setOnClickListener(startGameClick);
     }
     /** creates spinner to hold topic choices and sets on choice listeners. */
     private void spinnerSetUp() {
