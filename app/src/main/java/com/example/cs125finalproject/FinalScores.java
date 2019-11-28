@@ -12,7 +12,17 @@ public class FinalScores extends AppCompatActivity {
     /**
      * String array for the last 9 scores of the user, String[0] being the previous score.
      */
-    private String[] playerLast9ScoresStr = new String[9];
+    private String[] playerLast9ScoresStr;
+
+    /**
+     * Initializes the final scores to be all to be "Player 0"
+     */
+    public FinalScores() {
+        playerLast9ScoresStr = new String[9];
+        for (int i = 0; i < playerLast9ScoresStr.length; i++) {
+            playerLast9ScoresStr[i] = "Player 0";
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
