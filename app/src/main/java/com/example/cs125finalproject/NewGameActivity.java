@@ -67,7 +67,6 @@ public class NewGameActivity extends AppCompatActivity {
     }
     public NewGameActivity() {
         questionNumb = 0;
-        numberTimesPlayed = 0;
         activeScore = 0;
 
     }
@@ -105,7 +104,7 @@ public class NewGameActivity extends AppCompatActivity {
                 previousCurrentNameScore = currentNameScore;
             }
             newPlayer.setPoints(activeScore);
-            currentNameScore = newPlayer.getName() + playerScore.toString();
+            currentNameScore = newPlayer.getName() + newPlayer.getPoints();
             Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
@@ -175,6 +174,9 @@ public class NewGameActivity extends AppCompatActivity {
     public void updatePlayerScore() {
         if (correct) {
             activeScore++;
+            playerScore.setText(String.valueOf(activeScore));
+        } else {
+            activeScore--;
             playerScore.setText(String.valueOf(activeScore));
         }
     }
