@@ -33,15 +33,15 @@ public class NewGameActivity extends AppCompatActivity {
      */
     private int questionNumb;
     /**
-     * Current Score of player for the player history UI.
+     * Current name and score of player for the player history UI.
      */
-    public static String currentScore;
+    public static String currentNameScore;
     /**
-     * Previous Score of player for the player history UI.
+     * Previous current name and score of player for the player history UI.
      */
-    public static String previousCurrentScore;
+    public static String previousCurrentNameScore;
     /**
-     * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create.
+     * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create, which continues to update.
      */
     private static int numberTimesPlayed = -1;
     /**
@@ -97,14 +97,15 @@ public class NewGameActivity extends AppCompatActivity {
         final int correctAnswer = 2;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
-                previousCurrentScore = "0";
+                previousCurrentNameScore = "Player 0";
             } else {
                 //important that previousCurrentScore is modified before currentScore.
                 //This is so the previousCurrentScore is updated with the last CurrentScore before CurrentScore
                 // is modified to reflect the score now.
-                previousCurrentScore = currentScore;
+                previousCurrentNameScore = currentNameScore;
             }
-            currentScore = playerScore.toString();
+            newPlayer.setPoints(activeScore);
+            currentNameScore = newPlayer.getName() + playerScore.toString();
             Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
