@@ -17,7 +17,6 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
-        android:text="Your Score is..."
         app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
