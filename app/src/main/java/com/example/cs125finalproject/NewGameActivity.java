@@ -29,7 +29,8 @@ public class NewGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        newPlayer = new Player(savedInstanceState.getString("newPlayerName"), 0);
+        newPlayer = new Player(savedInstanceState.getString("newPlayerName"),
+                0, savedInstanceState.getInt("chosenTopic"));
         setContentView(R.layout.new_game_activity);
         updateQandA();
         numberTimesPlayed++;
