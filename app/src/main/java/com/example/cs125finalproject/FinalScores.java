@@ -27,7 +27,7 @@ public class FinalScores extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        updatePlayerScoresUI(NewGameActivity.currentNameScore, NewGameActivity.previousCurrentNameScore);
+        updatePlayerScoresUI(Main2Activity.currentNameScore, Main2Activity.previousCurrentNameScore);
         final Intent intent = new Intent(this, MainActivity.class);
         Button goBackToMainMenu = findViewById(R.id.goBackToMainMenu);
         goBackToMainMenu.setOnClickListener(new View.OnClickListener() {

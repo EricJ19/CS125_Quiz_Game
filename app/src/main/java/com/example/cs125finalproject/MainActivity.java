@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         spinnerSetUp();
         Button startGame = findViewById(R.id.startGame);
-        intent = new Intent(this, NewGameActivity.class);
+        intent = new Intent(this, Main2Activity.class);
         View.OnClickListener startGameClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                intent.putExtra("chosenTopic", i);
+                intent.putExtra("chosenTopic", i + 1);
             }
 
             @Override
