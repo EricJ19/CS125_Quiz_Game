@@ -104,7 +104,7 @@ public class NewGameActivity extends AppCompatActivity {
                 previousCurrentNameScore = currentNameScore;
             }
             newPlayer.setPoints(activeScore);
-            currentNameScore = newPlayer.getName() + newPlayer.getPoints();
+            currentNameScore = newPlayer.getName() + " " + newPlayer.getPoints();
             Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }

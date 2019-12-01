@@ -63,8 +63,8 @@ public class FinalScores extends AppCompatActivity {
         }
         // updates the previous score of the player, which will be placed in playerLast9Scored1 and is first in player's history.
         playerLast9ScoresStr[0] = previousCurrentScore;
-        playerCurrentScore.setText(currentScore);
 
+        playerCurrentScore.setText(currentScore);
         playerLast9Scores1.setText(playerLast9ScoresStr[0]);
         playerLast9Scores2.setText(playerLast9ScoresStr[1]);
         playerLast9Scores3.setText(playerLast9ScoresStr[2]);
