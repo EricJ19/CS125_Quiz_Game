@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
     /**
      * Player stores player info: name, score.
      */
-    public Player newPlayer;
+    public static Player newPlayer;
     /**
      * Correct - true if answer is button clicked, false if answer is not button clicked.
      */
@@ -69,7 +69,7 @@ public class Main2Activity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         newPlayer = new Player(bundle.getString("newPlayerName"),
          0, bundle.getInt("chosenTopic"));
-        String display = newPlayer.getName() + " " + "0";
+        String display = newPlayer.getName() + " " + 0;
         playerScore.setText(display);
         numberTimesPlayed++;
         updateQandA();
@@ -109,7 +109,7 @@ public class Main2Activity extends AppCompatActivity {
             }
             newPlayer.setPoints(activeScore);
             currentNameScore = newPlayer.getName() + " " + newPlayer.getPoints();
-            Intent intent = new Intent(this, FinalScores.class);
+            Intent intent = new Intent(this, ScoreHistory.class);
             startActivity(intent);
         }
         questionNumb++;

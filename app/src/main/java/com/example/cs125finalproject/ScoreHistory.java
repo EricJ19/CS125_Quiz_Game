@@ -1,34 +1,27 @@
 package com.example.cs125finalproject;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class FinalScores extends AppCompatActivity {
-    /**
-     * String array for the last 9 scores of the user, String[0] being the previous score.
-     */
+public class ScoreHistory extends AppCompatActivity {
     private String[] playerLast9ScoresStr;
-
-    /**
-     * Initializes the final scores to be all to be "Player 0"
-     */
-    public FinalScores() {
-        playerLast9ScoresStr = new String[9];
-        for (int i = 0; i < playerLast9ScoresStr.length; i++) {
-            playerLast9ScoresStr[i] = "Player 0";
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.player_last_scores);
-        updatePlayerScoresUI(Main2Activity.currentNameScore, Main2Activity.previousCurrentNameScore);
+        setContentView(R.layout.activity_score_history);
+        playerLast9ScoresStr = new String[9];
+        for (int i = 0; i < playerLast9ScoresStr.length; i++) {
+            playerLast9ScoresStr[i] = "Player 0";
+        }
+        Player currentPlayer = Main2Activity.newPlayer;
+        String currentInfo = currentPlayer.getName() + " " + currentPlayer.getPoints();
+        updatePlayerScoresUI(currentInfo, Main2Activity.previousCurrentNameScore);
         final Intent intent = new Intent(this, MainActivity.class);
         Button goBackToMainMenu = findViewById(R.id.goBackToMainMenu);
         goBackToMainMenu.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +32,6 @@ public class FinalScores extends AppCompatActivity {
             }
         });
     }
-
     /**
      *
      * @param currentScore - the score the user just received.
