@@ -43,7 +43,7 @@ public class NewGameActivity extends AppCompatActivity {
     /**
      * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create, which continues to update.
      */
-    private static int numberTimesPlayed = -1;
+    public static int numberTimesPlayed = -1;
     /**
      * Player stores player info: name, score.
      */
@@ -60,16 +60,13 @@ public class NewGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        questionNumb = 0;
+        activeScore = 0;
         newPlayer = new Player(savedInstanceState.getString("newPlayerName"),
                 0, savedInstanceState.getInt("chosenTopic"));
         setContentView(R.layout.new_game_activity);
         numberTimesPlayed++;
         updateQandA();
-    }
-    public NewGameActivity() {
-        questionNumb = 0;
-        activeScore = 0;
-
     }
     /**
      * Generates the random questions.
