@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#009688"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_width="310dp"
         android:layout_height="35dp"
         android:text="Player Current Score"
-        android:textColor="#AC840D"
+        android:textColor="#F1CE63"
         app:layout_constraintBottom_toTopOf="@+id/question"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:shadowColor="#00000000"
         android:text="answer1"
         app:layout_constraintBottom_toTopOf="@+id/answer2"
         app:layout_constraintEnd_toEndOf="parent"

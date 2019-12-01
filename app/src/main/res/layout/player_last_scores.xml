@@ -5,23 +5,8 @@
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2C554C"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/playerLast9Scores"
-        android:layout_width="285dp"
-        android:layout_height="480dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="30dp"
-        android:text="Your Score History:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/playerCurrentScore"
@@ -33,21 +18,147 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
-        android:text="Your Score is..."
-        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores1"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores2"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores3"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores4"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores5"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores6"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores7"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores8"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/playerLast9Scores9"
+        android:layout_width="285dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="36dp"
+        android:text="@null"
+        android:textColor="#FFEB3B"
+        app:layout_constraintBottom_toTopOf="@+id/goBackToMainMenu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/goBackToMainMenu"
         android:layout_width="285dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="48dp"
         android:text="Main Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerLast9Scores"
-        app:layout_constraintVertical_bias="0.527" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

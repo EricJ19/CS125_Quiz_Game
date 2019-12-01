@@ -12,18 +12,49 @@ import androidx.appcompat.app.AppCompatActivity;
  * Activity of the game after main menu and shows the randomly generated questions page.
  */
 public class NewGameActivity extends AppCompatActivity {
+    /**
+     * Buttons to the answers.
+     */
     final Button answer1 = findViewById(R.id.answer1);
     final Button answer2 = findViewById(R.id.answer2);
     final Button answer3 = findViewById(R.id.answer3);
     final Button answer4 = findViewById(R.id.answer4);
+    /**
+     * The question TextView.
+     */
     final TextView question = findViewById(R.id.question);
+    /**
+     * The playerScore TextView.
+     */
     final TextView playerScore = findViewById(R.id.playerScore);
+    /**
+     * This is an internal counter (not visible to player)
+     * reflects the question number the user is currently on.
+     */
     private int questionNumb;
-    public static String currentScore;
-    public static String previousCurrentScore;
-    private static int numberTimesPlayed;
+    /**
+     * Current name and score of player for the player history UI.
+     */
+    public static String currentNameScore;
+    /**
+     * Previous current name and score of player for the player history UI.
+     */
+    public static String previousCurrentNameScore;
+    /**
+     * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create, which continues to update.
+     */
+    private static int numberTimesPlayed = -1;
+    /**
+     * Player stores player info: name, score.
+     */
     public Player newPlayer;
+    /**
+     * Correct - true if answer is button clicked, false if answer is not button clicked.
+     */
     private boolean correct;
+    /**
+     * The score counter that updates as questions are answered is visible to player.
+     */
     private int activeScore;
 
     @Override
@@ -32,13 +63,13 @@ public class NewGameActivity extends AppCompatActivity {
         newPlayer = new Player(savedInstanceState.getString("newPlayerName"),
                 0, savedInstanceState.getInt("chosenTopic"));
         setContentView(R.layout.new_game_activity);
-        updateQandA();
         numberTimesPlayed++;
+        updateQandA();
     }
     public NewGameActivity() {
         questionNumb = 0;
-        numberTimesPlayed = 0;
         activeScore = 0;
+
     }
     /**
      * Generates the random questions.
@@ -66,11 +97,15 @@ public class NewGameActivity extends AppCompatActivity {
         final int correctAnswer = 2;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
-                previousCurrentScore = "0";
+                previousCurrentNameScore = "Player 0";
             } else {
-                previousCurrentScore = currentScore;
+                //important that previousCurrentScore is modified before currentScore.
+                //This is so the previousCurrentScore is updated with the last CurrentScore before CurrentScore
+                // is modified to reflect the score now.
+                previousCurrentNameScore = currentNameScore;
             }
-            currentScore = playerScore.toString();
+            newPlayer.setPoints(activeScore);
+            currentNameScore = newPlayer.getName() + " " + newPlayer.getPoints();
             Intent intent = new Intent(this, FinalScores.class);
             startActivity(intent);
         }
@@ -140,6 +175,9 @@ public class NewGameActivity extends AppCompatActivity {
     public void updatePlayerScore() {
         if (correct) {
             activeScore++;
+            playerScore.setText(String.valueOf(activeScore));
+        } else {
+            activeScore--;
             playerScore.setText(String.valueOf(activeScore));
         }
     }
