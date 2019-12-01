@@ -40,7 +40,7 @@ public class Main2Activity extends AppCompatActivity {
     /**
      * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create, which continues to update.
      */
-    private static int numberTimesPlayed = -1;
+    public static int numberTimesPlayed = -1;
     /**
      * Player stores player info: name, score.
      */
