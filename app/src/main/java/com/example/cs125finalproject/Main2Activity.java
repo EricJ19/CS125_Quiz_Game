@@ -1,32 +1,29 @@
 package com.example.cs125finalproject;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-/**
- * Activity of the game after main menu and shows the randomly generated questions page.
- */
-public class NewGameActivity extends AppCompatActivity {
+public class Main2Activity extends AppCompatActivity {
     /**
      * Buttons to the answers.
      */
-    final Button answer1 = findViewById(R.id.answer1);
-    final Button answer2 = findViewById(R.id.answer2);
-    final Button answer3 = findViewById(R.id.answer3);
-    final Button answer4 = findViewById(R.id.answer4);
+    private Button answer1;
+    private Button answer2;
+    private Button answer3;
+    private Button answer4;
     /**
      * The question TextView.
      */
-    final TextView question = findViewById(R.id.question);
+    private TextView question;
     /**
      * The playerScore TextView.
      */
-    final TextView playerScore = findViewById(R.id.playerScore);
+    private TextView playerScore;
     /**
      * This is an internal counter (not visible to player)
      * reflects the question number the user is currently on.
@@ -47,7 +44,7 @@ public class NewGameActivity extends AppCompatActivity {
     /**
      * Player stores player info: name, score.
      */
-    public Player newPlayer;
+    public static Player newPlayer;
     /**
      * Correct - true if answer is button clicked, false if answer is not button clicked.
      */
@@ -60,11 +57,20 @@ public class NewGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+        answer1 = findViewById(R.id.answer1);
+        answer2 = findViewById(R.id.answer2);
+        answer3 = findViewById(R.id.answer3);
+        answer4 = findViewById(R.id.answer4);
+        question = findViewById(R.id.question);
+        playerScore = findViewById(R.id.playerScore);
         questionNumb = 0;
         activeScore = 0;
-        newPlayer = new Player(savedInstanceState.getString("newPlayerName"),
-                0, savedInstanceState.getInt("chosenTopic"));
-        setContentView(R.layout.new_game_activity);
+        Bundle bundle = getIntent().getExtras();
+        newPlayer = new Player(bundle.getString("newPlayerName"),
+         0, bundle.getInt("chosenTopic"));
+        String display = newPlayer.getName() + " " + 0;
+        playerScore.setText(display);
         numberTimesPlayed++;
         updateQandA();
     }
@@ -103,7 +109,7 @@ public class NewGameActivity extends AppCompatActivity {
             }
             newPlayer.setPoints(activeScore);
             currentNameScore = newPlayer.getName() + " " + newPlayer.getPoints();
-            Intent intent = new Intent(this, FinalScores.class);
+            Intent intent = new Intent(this, ScoreHistory.class);
             startActivity(intent);
         }
         questionNumb++;
@@ -172,10 +178,12 @@ public class NewGameActivity extends AppCompatActivity {
     public void updatePlayerScore() {
         if (correct) {
             activeScore++;
-            playerScore.setText(String.valueOf(activeScore));
+            String display = newPlayer.getName() + " " + String.valueOf(activeScore);
+            playerScore.setText(display);
         } else {
             activeScore--;
-            playerScore.setText(String.valueOf(activeScore));
+            String display = newPlayer.getName() + " " + String.valueOf(activeScore);
+            playerScore.setText(display);
         }
     }
 
