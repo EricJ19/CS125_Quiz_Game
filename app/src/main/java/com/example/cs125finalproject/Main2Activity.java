@@ -78,6 +78,7 @@ public class Main2Activity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void questionGenerate() {
+
         question.setText("");
     }
     /**
