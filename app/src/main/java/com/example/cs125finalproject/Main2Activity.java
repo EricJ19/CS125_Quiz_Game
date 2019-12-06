@@ -7,6 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 public class Main2Activity extends AppCompatActivity {
     /**
@@ -53,6 +62,7 @@ public class Main2Activity extends AppCompatActivity {
      * The score counter that updates as questions are answered is visible to player.
      */
     private int activeScore;
+    private JSONObject QandA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,23 +82,88 @@ public class Main2Activity extends AppCompatActivity {
         String display = newPlayer.getName() + " " + 0;
         playerScore.setText(display);
         numberTimesPlayed++;
+        //QandA = webResponse();
         updateQandA();
     }
+    /** gets the questions from the url and returns it as a Json Object. */
+    /**private JSONObject webResponse() {
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        String generalUrl = "";
+        switch (newPlayer.getTopic()) {
+            case 1:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=9&type=multiple";
+                break;
+            case 2:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
+                break;
+            case 3:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=11&type=multiple";
+                break;
+            case 4:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=20&type=multiple";
+                break;
+            case 5:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=23&type=multiple";
+                break;
+            default:
+                break;
+        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, generalUrl,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        question.setText(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                question.setText("Web Request Failed");
+            }
+        });
+        queue.add(stringRequest);
+    }*/
     /**
      * Generates the random questions.
      */
-    public void questionGenerate() {
+    public void generateQandA() {
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        String generalUrl = "";
+        switch (newPlayer.getTopic()) {
+            case 1:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=9&type=multiple";
+                break;
+            case 2:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
+                break;
+            case 3:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=11&type=multiple";
+                break;
+            case 4:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=20&type=multiple";
+                break;
+            case 5:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=23&type=multiple";
+                break;
+            default:
+                break;
+        }
+        String url ="http://www.google.com";
 
-        question.setText("");
-    }
-    /**
-     * Generates the random answers.
-     */
-    public void answersGenerate() {
-        answer1.setText("");
-        answer2.setText("");
-        answer3.setText("");
-        answer4.setText("");
+// Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        question.setText("Response is: "+ response.substring(0,500));
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                question.setText("That didn't work!");
+            }
+        });
+        queue.add(stringRequest);
     }
     /**
      * Update questions and answers when an answer is clicked.
@@ -114,8 +189,7 @@ public class Main2Activity extends AppCompatActivity {
             startActivity(intent);
         }
         questionNumb++;
-        questionGenerate();
-        answersGenerate();
+        generateQandA();
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

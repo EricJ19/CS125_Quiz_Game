@@ -36,4 +36,6 @@ public class Player {
     public void setPoints(int setPoints) {
         points = setPoints;
     }
+    /** return topic chosen. */
+    public int getTopic() { return topic; }
 }
