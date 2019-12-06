@@ -176,7 +176,7 @@ public class Main2Activity extends AppCompatActivity {
         final int correctAnswer = 2;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
-                previousCurrentNameScore = "Player 0";
+                previousCurrentNameScore = "";
             } else {
                 //important that previousCurrentScore is modified before currentScore.
                 //This is so the previousCurrentScore is updated with the last CurrentScore before CurrentScore
