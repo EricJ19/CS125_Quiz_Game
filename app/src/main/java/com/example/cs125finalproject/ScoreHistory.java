@@ -18,7 +18,7 @@ public class ScoreHistory extends AppCompatActivity {
         playerLast9ScoresStr = new String[9];
         if (Main2Activity.numberTimesPlayed == 0) {
             for (int i = 0; i < playerLast9ScoresStr.length; i++) {
-                playerLast9ScoresStr[i] = "Player 0";
+                playerLast9ScoresStr[i] = "";
             }
         }
         Player currentPlayer = Main2Activity.newPlayer;
@@ -62,14 +62,14 @@ public class ScoreHistory extends AppCompatActivity {
 
 
         playerCurrentScore.setText(currentScore);
-        playerLast9Scores9.setText(playerLast9ScoresStr[8]);
-        playerLast9Scores8.setText(playerLast9ScoresStr[7]);
-        playerLast9Scores7.setText(playerLast9ScoresStr[6]);
-        playerLast9Scores6.setText(playerLast9ScoresStr[5]);
-        playerLast9Scores5.setText(playerLast9ScoresStr[4]);
-        playerLast9Scores4.setText(playerLast9ScoresStr[3]);
-        playerLast9Scores3.setText(playerLast9ScoresStr[2]);
-        playerLast9Scores2.setText(playerLast9ScoresStr[1]);
-        playerLast9Scores1.setText(playerLast9ScoresStr[0]);
+        playerLast9Scores9.setText(playerLast9Scores8.getText().toString());
+        playerLast9Scores8.setText(playerLast9Scores7.getText().toString());
+        playerLast9Scores7.setText(playerLast9Scores6.getText().toString());
+        playerLast9Scores6.setText(playerLast9Scores5.getText().toString());
+        playerLast9Scores5.setText(playerLast9Scores4.getText().toString());
+        playerLast9Scores4.setText(playerLast9Scores3.getText().toString());
+        playerLast9Scores3.setText(playerLast9Scores2.getText().toString());
+        playerLast9Scores2.setText(playerLast9Scores1.getText().toString());
+        playerLast9Scores1.setText(previousCurrentScore);
     }
 }
