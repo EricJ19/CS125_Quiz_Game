@@ -40,9 +40,11 @@ public class MainActivity extends AppCompatActivity {
     private void spinnerSetUp() {
         Spinner spinner = findViewById(R.id.gameTopic);
         List<String> list = new ArrayList<>();
-        list.add("topic 1");
-        list.add("topic 2");
-        list.add("topic 3");
+        list.add("General Knowledge");
+        list.add("Science: Computers");
+        list.add("Entertainment: Film");
+        list.add("Mythology");
+        list.add("History");
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
