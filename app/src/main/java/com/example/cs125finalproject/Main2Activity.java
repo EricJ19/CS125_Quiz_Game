@@ -7,6 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
 
 public class Main2Activity extends AppCompatActivity {
     /**
@@ -78,8 +86,40 @@ public class Main2Activity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void questionGenerate() {
-
-        question.setText("");
+        final RequestQueue queue = Volley.newRequestQueue(this);
+        String generalUrl = "";
+        switch (newPlayer.getTopic()) {
+            case 1:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=9&type=multiple";
+                break;
+            case 2:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=18&type=multiple";
+                break;
+            case 3:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=11&type=multiple";
+                break;
+            case 4:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=20&type=multiple";
+                break;
+            case 5:
+                generalUrl = "https://opentdb.com/api.php?amount=10&category=23&type=multiple";
+                break;
+            default:
+                break;
+        }
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, generalUrl,
+                new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                question.setText(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                question.setText("Web Request Failed");
+            }
+        });
+        queue.add(stringRequest);
     }
     /**
      * Generates the random answers.
