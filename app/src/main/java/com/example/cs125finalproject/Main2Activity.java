@@ -16,8 +16,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.util.Random;
 
 public class Main2Activity extends AppCompatActivity {
     /**
@@ -64,7 +68,11 @@ public class Main2Activity extends AppCompatActivity {
      * The score counter that updates as questions are answered is visible to player.
      */
     private int activeScore;
-    private JSONObject QandA;
+    private JsonObject QandA;
+    private String[] questionsArray;
+    private String[] correctAnswersArray;
+    private String[][] incorrectAnswersArray;
+    private int result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,9 @@ public class Main2Activity extends AppCompatActivity {
         String display = newPlayer.getName() + " " + 0;
         playerScore.setText(display);
         numberTimesPlayed++;
+        questionsArray = new String[10];
+        correctAnswersArray = new String[10];
+        incorrectAnswersArray = new String[10][3];
         webResponse();
         updateQandA();
     }
@@ -115,11 +126,7 @@ public class Main2Activity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try {
-                            QandA = new JSONObject(response);
-                        }catch (JSONException e){
-                            Log.d("JSON Error", e.toString());
-                        }
+                        QandA = new JsonParser().parse(response).getAsJsonObject();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -133,7 +140,54 @@ public class Main2Activity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void generateQandA() {
-        
+        JsonArray responseJArray = QandA.get("results").getAsJsonArray();
+        int count = 0;
+        for (JsonElement part : responseJArray) {
+            JsonObject partObject = (JsonObject) part;
+            questionsArray[count] = partObject.get("question").getAsString();
+            correctAnswersArray[count] = partObject.get("correct_answer").getAsString();
+            JsonArray incorrectJArray = partObject.get("incorrect_answers").getAsJsonArray();
+            int count2 = 0;
+            for (JsonElement incorrect : incorrectJArray) {
+                String incorrectString = incorrect.getAsString();
+                incorrectAnswersArray[count][count2] = incorrectString;
+                count2++;
+            }
+            count++;
+        }
+        question.setText(questionsArray[questionNumb]);
+        Random randomNumb = new Random();
+        int low = 0;
+        int high = 4;
+        result = randomNumb.nextInt(high-low) + low;
+        switch (result) {
+            case 0:
+                answer1.setText(correctAnswersArray[questionNumb]);
+                answer2.setText(incorrectAnswersArray[questionNumb][0]);
+                answer3.setText(incorrectAnswersArray[questionNumb][1]);
+                answer4.setText(incorrectAnswersArray[questionNumb][2]);
+                break;
+            case 1:
+                answer2.setText(correctAnswersArray[questionNumb]);
+                answer1.setText(incorrectAnswersArray[questionNumb][0]);
+                answer3.setText(incorrectAnswersArray[questionNumb][1]);
+                answer4.setText(incorrectAnswersArray[questionNumb][2]);
+                break;
+            case 2:
+                answer3.setText(correctAnswersArray[questionNumb]);
+                answer2.setText(incorrectAnswersArray[questionNumb][0]);
+                answer1.setText(incorrectAnswersArray[questionNumb][1]);
+                answer4.setText(incorrectAnswersArray[questionNumb][2]);
+                break;
+            case 3:
+                answer4.setText(correctAnswersArray[questionNumb]);
+                answer2.setText(incorrectAnswersArray[questionNumb][0]);
+                answer3.setText(incorrectAnswersArray[questionNumb][1]);
+                answer1.setText(incorrectAnswersArray[questionNumb][2]);
+                break;
+            default:
+                break;
+        }
     }
     /**
      * Update questions and answers when an answer is clicked.
@@ -143,7 +197,7 @@ public class Main2Activity extends AppCompatActivity {
      */
     public void updateQandA() {
         //the correctAnswer is based on the question and answer. Code doesn't reflect that and instead has int 2 for testing purposes.
-        final int correctAnswer = 2;
+        final int correctAnswer = result;
         if (questionNumb == 10) {
             if (numberTimesPlayed == 0) {
                 previousCurrentNameScore = "";
@@ -164,7 +218,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 // Change the label's text
-                if (correctAnswer == 1) {
+                if (correctAnswer == 0) {
                     correct = true;
                     updatePlayerScore();
                 } else {
@@ -178,7 +232,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 // Change the label's text
-                if (correctAnswer == 2) {
+                if (correctAnswer == 1) {
                     correct = true;
                     updatePlayerScore();
                 } else {
@@ -192,7 +246,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 // Change the label's text
-                if (correctAnswer == 3) {
+                if (correctAnswer == 2) {
                     correct = true;
                     updatePlayerScore();
                 } else {
@@ -206,7 +260,7 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(final View v) {
                 // Change the label's text
-                if (correctAnswer == 4) {
+                if (correctAnswer == 3) {
                     correct = true;
                     updatePlayerScore();
                 } else {
