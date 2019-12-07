@@ -55,15 +55,11 @@ public class Main2Activity extends AppCompatActivity {
     /**
      * Number of times the player has played the quiz. Starts at -1 but updates to 0 on first create, which continues to update.
      */
-    public static int numberTimesPlayed = -1;
+    public static int numberTimesPlayed = 1;
     /**
      * Player stores player info: name, score.
      */
     public static Player newPlayer;
-    /**
-     * Correct - true if answer is button clicked, false if answer is not button clicked.
-     */
-    private boolean correct;
     /**
      * The score counter that updates as questions are answered is visible to player.
      */
@@ -84,7 +80,7 @@ public class Main2Activity extends AppCompatActivity {
         answer4 = findViewById(R.id.answer4);
         question = findViewById(R.id.question);
         playerScore = findViewById(R.id.playerScore);
-        questionNumb = 0;
+        questionNumb = 1;
         activeScore = 0;
         Bundle bundle = getIntent().getExtras();
         newPlayer = new Player(bundle.getString("newPlayerName"),
@@ -96,7 +92,6 @@ public class Main2Activity extends AppCompatActivity {
         correctAnswersArray = new String[10];
         incorrectAnswersArray = new String[10][3];
         webResponse();
-        updateQandA();
     }
     /** gets the questions from the url and returns it as a Json Object. */
     private void webResponse() {
@@ -127,6 +122,8 @@ public class Main2Activity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         QandA = new JsonParser().parse(response).getAsJsonObject();
+                        putQandA();
+                        updateQandA();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -136,10 +133,7 @@ public class Main2Activity extends AppCompatActivity {
         });
         queue.add(stringRequest);
     }
-    /**
-     * Generates the random questions.
-     */
-    public void generateQandA() {
+    public void putQandA() {
         JsonArray responseJArray = QandA.get("results").getAsJsonArray();
         int count = 0;
         for (JsonElement part : responseJArray) {
@@ -155,52 +149,12 @@ public class Main2Activity extends AppCompatActivity {
             }
             count++;
         }
-
-        //question.setText(questionsArray[questionNumb]);
-        question.setText("");
-        Random randomNumb = new Random();
-        int low = 0;
-        int high = 4;
-        result = randomNumb.nextInt(high-low) + low;
-        switch (result) {
-            case 0:
-                answer1.setText(correctAnswersArray[questionNumb]);
-                answer2.setText(incorrectAnswersArray[questionNumb][0]);
-                answer3.setText(incorrectAnswersArray[questionNumb][1]);
-                answer4.setText(incorrectAnswersArray[questionNumb][2]);
-                break;
-            case 1:
-                answer2.setText(correctAnswersArray[questionNumb]);
-                answer1.setText(incorrectAnswersArray[questionNumb][0]);
-                answer3.setText(incorrectAnswersArray[questionNumb][1]);
-                answer4.setText(incorrectAnswersArray[questionNumb][2]);
-                break;
-            case 2:
-                answer3.setText(correctAnswersArray[questionNumb]);
-                answer2.setText(incorrectAnswersArray[questionNumb][0]);
-                answer1.setText(incorrectAnswersArray[questionNumb][1]);
-                answer4.setText(incorrectAnswersArray[questionNumb][2]);
-                break;
-            case 3:
-                answer4.setText(correctAnswersArray[questionNumb]);
-                answer2.setText(incorrectAnswersArray[questionNumb][0]);
-                answer3.setText(incorrectAnswersArray[questionNumb][1]);
-                answer1.setText(incorrectAnswersArray[questionNumb][2]);
-                break;
-            default:
-                break;
-        }
     }
     /**
-     * Update questions and answers when an answer is clicked.
-     * If the number of questions answered is 10 (after user clicked 10 answers), then the app will go to players page.
-     * currentScore will be set to the score of this session.
-     * previousCurrentScore is the score of last session and is "0" if there was no session previously.
+     * Generates the random questions.
      */
-    public void updateQandA() {
-        //the correctAnswer is based on the question and answer. Code doesn't reflect that and instead has int 2 for testing purposes.
-        final int correctAnswer = result;
-        if (questionNumb == 10) {
+    public void generateQandA() {
+        if (questionNumb == 11) {
             if (numberTimesPlayed == 0) {
                 previousCurrentNameScore = "";
             } else {
@@ -213,19 +167,61 @@ public class Main2Activity extends AppCompatActivity {
             currentNameScore = newPlayer.getName() + " " + newPlayer.getPoints();
             Intent intent = new Intent(this, ScoreHistory.class);
             startActivity(intent);
+            finish();
+        } else {
+            question.setText(questionsArray[questionNumb - 1]);
+            Random randomNumb = new Random();
+            int low = 0;
+            int high = 4;
+            result = randomNumb.nextInt(high - low) + low;
+            switch (result) {
+                case 0:
+                    answer1.setText(correctAnswersArray[questionNumb - 1]);
+                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
+                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
+                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    break;
+                case 1:
+                    answer2.setText(correctAnswersArray[questionNumb - 1]);
+                    answer1.setText(incorrectAnswersArray[questionNumb - 1][0]);
+                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
+                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    break;
+                case 2:
+                    answer3.setText(correctAnswersArray[questionNumb - 1]);
+                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
+                    answer1.setText(incorrectAnswersArray[questionNumb - 1][1]);
+                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    break;
+                case 3:
+                    answer4.setText(correctAnswersArray[questionNumb - 1]);
+                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
+                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
+                    answer1.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    break;
+                default:
+                    break;
+            }
         }
-        questionNumb++;
+    }
+    /**
+     * Update questions and answers when an answer is clicked.
+     * If the number of questions answered is 10 (after user clicked 10 answers), then the app will go to players page.
+     * currentScore will be set to the score of this session.
+     * previousCurrentScore is the score of last session and is "0" if there was no session previously.
+     */
+    public void updateQandA() {
+        //the correctAnswer is based on the question and answer. Code doesn't reflect that and instead has int 2 for testing purposes.
         generateQandA();
+        final int correctAnswer = result;
         answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 0) {
-                    correct = true;
-                    updatePlayerScore();
+                    updatePlayerScore(true);
                 } else {
-                    correct = false;
-                    updatePlayerScore();
+                    updatePlayerScore(false);
                 }
                 updateQandA();
             }
@@ -235,11 +231,9 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 1) {
-                    correct = true;
-                    updatePlayerScore();
+                    updatePlayerScore(true);
                 } else {
-                    correct = false;
-                    updatePlayerScore();
+                    updatePlayerScore(false);
                 }
                 updateQandA();
             }
@@ -249,11 +243,9 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 2) {
-                    correct = true;
-                    updatePlayerScore();
+                    updatePlayerScore(true);
                 } else {
-                    correct = false;
-                    updatePlayerScore();
+                    updatePlayerScore(false);
                 }
                 updateQandA();
             }
@@ -263,11 +255,9 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(final View v) {
                 // Change the label's text
                 if (correctAnswer == 3) {
-                    correct = true;
-                    updatePlayerScore();
+                    updatePlayerScore(true);
                 } else {
-                    correct = false;
-                    updatePlayerScore();
+                    updatePlayerScore(false);
                 }
                 updateQandA();
             }
@@ -276,7 +266,8 @@ public class Main2Activity extends AppCompatActivity {
     /**
      * Updates the score part of UI after the answer is clicked by user.
      */
-    public void updatePlayerScore() {
+    public void updatePlayerScore(Boolean correct) {
+        questionNumb++;
         if (correct) {
             activeScore++;
             String display = newPlayer.getName() + " " + String.valueOf(activeScore);
