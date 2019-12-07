@@ -155,7 +155,9 @@ public class Main2Activity extends AppCompatActivity {
             }
             count++;
         }
-        question.setText(questionsArray[questionNumb]);
+
+        //question.setText(questionsArray[questionNumb]);
+        question.setText("");
         Random randomNumb = new Random();
         int low = 0;
         int high = 4;
