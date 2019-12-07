@@ -20,6 +20,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.Random;
 
@@ -169,35 +170,35 @@ public class Main2Activity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            question.setText(questionsArray[questionNumb - 1]);
+            question.setText(StringEscapeUtils.unescapeHtml4(questionsArray[questionNumb - 1]));
             Random randomNumb = new Random();
             int low = 0;
             int high = 4;
             result = randomNumb.nextInt(high - low) + low;
             switch (result) {
                 case 0:
-                    answer1.setText(correctAnswersArray[questionNumb - 1]);
-                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
-                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
-                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    answer1.setText(StringEscapeUtils.unescapeHtml4(correctAnswersArray[questionNumb - 1]));
+                    answer2.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][0]));
+                    answer3.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][1]));
+                    answer4.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][2]));
                     break;
                 case 1:
-                    answer2.setText(correctAnswersArray[questionNumb - 1]);
-                    answer1.setText(incorrectAnswersArray[questionNumb - 1][0]);
-                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
-                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    answer2.setText(StringEscapeUtils.unescapeHtml4(correctAnswersArray[questionNumb - 1]));
+                    answer1.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][0]));
+                    answer3.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][1]));
+                    answer4.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][2]));
                     break;
                 case 2:
-                    answer3.setText(correctAnswersArray[questionNumb - 1]);
-                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
-                    answer1.setText(incorrectAnswersArray[questionNumb - 1][1]);
-                    answer4.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    answer3.setText(StringEscapeUtils.unescapeHtml4(correctAnswersArray[questionNumb - 1]));
+                    answer2.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][0]));
+                    answer1.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][1]));
+                    answer4.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][2]));
                     break;
                 case 3:
-                    answer4.setText(correctAnswersArray[questionNumb - 1]);
-                    answer2.setText(incorrectAnswersArray[questionNumb - 1][0]);
-                    answer3.setText(incorrectAnswersArray[questionNumb - 1][1]);
-                    answer1.setText(incorrectAnswersArray[questionNumb - 1][2]);
+                    answer4.setText(StringEscapeUtils.unescapeHtml4(correctAnswersArray[questionNumb - 1]));
+                    answer2.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][0]));
+                    answer3.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][1]));
+                    answer1.setText(StringEscapeUtils.unescapeHtml4(incorrectAnswersArray[questionNumb - 1][2]));
                     break;
                 default:
                     break;
