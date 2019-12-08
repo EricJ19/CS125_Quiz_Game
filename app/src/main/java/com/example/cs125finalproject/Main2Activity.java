@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -172,9 +170,8 @@ public class Main2Activity extends AppCompatActivity {
         } else {
             question.setText(StringEscapeUtils.unescapeHtml4(questionsArray[questionNumb - 1]));
             Random randomNumb = new Random();
-            int low = 0;
             int high = 4;
-            result = randomNumb.nextInt(high - low) + low;
+            result = randomNumb.nextInt(high);
             switch (result) {
                 case 0:
                     answer1.setText(StringEscapeUtils.unescapeHtml4(correctAnswersArray[questionNumb - 1]));
