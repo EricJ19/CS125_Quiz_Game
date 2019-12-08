@@ -271,11 +271,11 @@ public class Main2Activity extends AppCompatActivity {
         questionNumb++;
         if (correct) {
             activeScore++;
-            String display = newPlayer.getName() + " " + String.valueOf(activeScore);
+            String display = newPlayer.getName() + " " + (activeScore);
             playerScore.setText(display);
         } else {
             activeScore--;
-            String display = newPlayer.getName() + " " + String.valueOf(activeScore);
+            String display = newPlayer.getName() + " " + (activeScore);
             playerScore.setText(display);
         }
     }
