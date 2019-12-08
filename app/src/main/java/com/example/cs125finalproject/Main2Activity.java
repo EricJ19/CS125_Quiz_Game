@@ -133,7 +133,7 @@ public class Main2Activity extends AppCompatActivity {
      * Generates the random questions.
      */
     public void generateQandA() {
-        
+
     }
     /**
      * Update questions and answers when an answer is clicked.
