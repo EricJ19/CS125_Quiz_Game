@@ -29,55 +29,6 @@
             android:layout_height="50dp"
             android:textColor="#FFEB3B" />
 
-        <TextView
-            android:id="@+id/playerLast9Scores2"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores3"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores4"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores5"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores6"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores7"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores8"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:textColor="#FFEB3B" />
-
-        <TextView
-            android:id="@+id/playerLast9Scores9"
-            android:layout_width="285dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="36dp"
-            android:textColor="#FFEB3B" />
-
         <Button
             android:id="@+id/goBackToMainMenu"
             android:layout_width="285dp"
