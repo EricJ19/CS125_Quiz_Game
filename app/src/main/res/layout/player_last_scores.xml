@@ -19,14 +19,14 @@
         android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
         android:textColor="#FFEB3B"
-        app:layout_constraintBottom_toTopOf="@+id/playerLast9Scores1"
+        app:layout_constraintBottom_toTopOf="@+id/playerLastScore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482" />
 
     <TextView
-        android:id="@+id/playerLast9Scores1"
+        android:id="@+id/playerLastScore"
         android:layout_width="285dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
